@@ -14,7 +14,7 @@ Para llevar a cabo la práctica, el primer paso consistió en hacer la Cinemáti
 Obteniendo la siguiente DH:
 
 <p align="center">
-    <img src=images/paletizado_externo.png alt="DH en la posición de Home " width="450">
+    <img src=images/DHstd.jpg alt="DH en la posición de Home " width="450">
 </p>
 
 Posteriormente, mediante el uso del toolbox de matlab se grafican las distintas poses  del robot y sus respectivas DH solicitadas en la guía de laboratorio, obteniendo:
@@ -22,31 +22,31 @@ Posteriormente, mediante el uso del toolbox de matlab se grafican las distintas 
 * 0, 0, 0, 0, 0.
 
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose Home" width="250">
+    <img src=images/pose Home.PNG alt="Pose Home" width="250">
 </p>
 
 * 25, 25, 20,-20, 0.
  
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 1" width="250">
+    <img src=images/pose 1.PNG alt="Pose 1" width="250">
 </p>
 
 * -35,35,-30, 30, 0.
  
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 2" width="250">
+    <img src=images/pose 2.PNG alt="Pose 2" width="250">
 </p>
 
 * 85,-20, 55, 25, 0.
 
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 3" width="250">
+    <img src=images/pose 3.PNG alt="Pose 3" width="250">
 </p>
 
  * 80,-35, 55,-45, 0.
 
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 3" width="250">
+    <img src=images/pose 4.PNG alt="Pose 4" width="250">
 </p>
 
 Finalmente, mediante el método trchain(), se obtiene la orientación y posición del NOA para una configuración específica de las articulaciones q1, q2, q3, q4 y q5. Este proceso incluye una serie de rotaciones y traslaciones puras que permiten determinar la pose del NOA.
