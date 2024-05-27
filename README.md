@@ -1,4 +1,4 @@
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/72814340/9e4d79d3-77ea-40e8-af13-8efc43e8f434)# Laboratorio 4 - Cinemática Directa - Phantom X - ROS
+ Laboratorio 4 - Cinemática Directa - Phantom X - ROS
 
 ***INTEGRANTES***
 
