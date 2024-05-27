@@ -61,13 +61,40 @@ Y la MTH resultante es igual a:
 
 
 
-## Videos Demostrativos
-A continuación se añaden los vídeos de los resultados obtenidos del laboratorio:
+## Implementación en ROS
 
-Vídeo de la ejecución en EPSON RC+ 7.0:
+Después de sacar el modelo geométrico directo, se procedió a implementar la solución en ROS teniendo en cuenta las recomendaciones de la guía, por lo que para realizar dichos puntos, se hizo un solo programa en la cual se integra todos los puntos, primero importamos las librerias necesarias para el funcionamiento del programa:
 
-[VÍDEO DE LA EJECUCIÓN EN EPSON RC+ 7.0](https://drive.google.com/drive/folders/16ONF3JqlUhxU9FzaknRo4nXTZ7jvJ7LK?usp=sharing)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/eb250911-1135-4a1c-9661-e2197c475a3d)
 
-Vídeo de la demostración en vivo del funcionamiento:
+Después programamos los arreglos con los ángulos de cada una de las poses del robot y su equivalente análogo el cual facilitará el movimiento:
 
-[VÍDEO DE LA EJECUCIÓN](https://drive.google.com/drive/folders/1lr2AhREz9yGd2liMuURUi9P7plOJVTkf?usp=sharing)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/1140d247-c893-47f7-b835-2c1fd3ff38b3)
+
+Ahora debemos programar el servicio de Dynamizel, el cual se mantiene en constante contacto con el nodo activo y el roscore, agilizando la comunicación entre ROS y el robot:
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/22b8065e-ab02-470b-a343-77f054c078b8)
+
+Sabiendo que necesitamos del suscriptor para saber las posiciones de los motores, debemos preparar un callback el cual se programó de la siguiente manera:
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/ac1627ce-bb26-4a65-86ed-30d67b222845)
+
+Lo siguiente es para imprimir posiciones, el cuál se tiene en cuenta con la precisión dada por los motores: 
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/80c2c03e-2828-4353-b7fb-0ab48126d3a1)
+
+Ahora debemos programar el movimiento de las articulaciones simplemente llamando al sistema de envío de comandos de Dynamixel: 
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/26a71515-738d-41c4-ad45-7c1aae8e4598)
+
+Finalmente, tenemos el código principal en el cual se incluye el movimiento hacia el home y el bucle para ir de una posición a otra sin tener que reejecutar el programa: 
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/a71592ea-5b17-4329-8f60-d80835d1a646)
+
+Cabe aclarar que la interfaz HMI se programó para la consola.
+
+
+
+
+
+
