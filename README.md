@@ -22,7 +22,7 @@ Posteriormente, mediante el uso del toolbox de matlab se grafican las distintas 
 * 0, 0, 0, 0, 0.
 
 <p align="center">
-    <img src=images/pose Home.PNG alt="Pose Home" width="250">
+    <img src=(images/pose Home.PNG) alt="Pose Home" width="250">
 </p>
 
 * 25, 25, 20,-20, 0.
