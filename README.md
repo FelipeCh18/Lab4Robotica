@@ -8,7 +8,7 @@
 Para llevar a cabo la práctica, el primer paso consistió en hacer la Cinemática Directa del Robot en la posición de Home y así obtener los parámetros de DH. En la figura pueden observarse las distintas distancias que existen entre los eslabones del robot, y sus respectivas magnitudes, adquiridas mediante el uso de un calibrador.
 
 <p align="center">
-    <img src=images/paletizado_externo.png alt="Cinemática Directa " width="450">
+    <img src=images/modelo_directo.jpg alt="Cinemática Directa " width="450">
 </p>
 
 Obteniendo la siguiente DH:
