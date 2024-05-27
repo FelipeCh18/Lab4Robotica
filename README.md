@@ -1,19 +1,52 @@
-# Laboratorio 4 - Cinemática Directa - Phantom X - ROS
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/72814340/9e4d79d3-77ea-40e8-af13-8efc43e8f434)# Laboratorio 4 - Cinemática Directa - Phantom X - ROS
 
 ***INTEGRANTES***
 
 * Marco Antonio Quimbay Dueñas
 * Felipe Chaves Delgadillo
 
-Para el desarrollo de la práctica, se establecieron las distintas trayectorias siguiendo la guía proporcionada por la empresa "Control de movimiento" y se siguieron las distintas instrucciones ofrecidas en las instalaciones el día de la práctica.
-
-El programa realizado para el seguimiento de las trayectorias sigue la lógica de los siguientes diagramas de flujo:
+Para llevar a cabo la práctica, el primer paso consistió en hacer la Cinemática Directa del Robot en la posición de Home y así obtener los parámetros de DH. En la figura pueden observarse las distintas distancias que existen entre los eslabones del robot, y sus respectivas magnitudes, adquiridas mediante el uso de un calibrador.
 
 <p align="center">
-    <img src=images/DiagramaDeFlujoGeneral.png alt="Diagrama De Flujo General " width="250">
+    <img src=images/paletizado_externo.png alt="Cinemática Directa " width="450">
 </p>
+
+Obteniendo la siguiente DH:
+
 <p align="center">
-    <img src=images/DiagramaDeFlujoFunciones.png alt="Diagrama De Flujo Funciones" width="1200">
+    <img src=images/paletizado_externo.png alt="DH en la posición de Home " width="450">
+</p>
+
+Posteriormente, mediante el uso del toolbox de matlab se grafican las distintas poses  del robot y sus respectivas DH solicitadas en la guía de laboratorio, obteniendo:
+
+* 0, 0, 0, 0, 0.
+
+<p align="center">
+    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose Home" width="250">
+</p>
+
+* 25, 25, 20,-20, 0.
+ 
+<p align="center">
+    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 1" width="250">
+</p>
+
+* -35,35,-30, 30, 0.
+ 
+<p align="center">
+    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 2" width="250">
+</p>
+
+* 85,-20, 55, 25, 0.
+
+<p align="center">
+    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 3" width="250">
+</p>
+
+ * 80,-35, 55,-45, 0.
+
+<p align="center">
+    <img src=images/DiagramaDeFlujoGeneral.png alt="Pose 3" width="250">
 </p>
 
 ## Trayectorias 
