@@ -61,22 +61,6 @@ Y la MTH resultante es igual a:
 
 
 
-## Trayectorias 
-Paletizado en z
-<p align="center">
-    <img src=images/paletizado_externo.png alt="Paletizado z " width="450">
-</p>
-
-Paletizado en S
-<p align="center">
-    <img src=images/paletizado_s.png alt="Paletizado en S " width="450">
-</p>
-
-Paletizado Externo
-<p align="center">
-    <img src=images/Paletizado_z.png alt="Paletizado Externo " width="450">
-</p>
-
 ## Videos Demostrativos
 A continuación se añaden los vídeos de los resultados obtenidos del laboratorio:
 
