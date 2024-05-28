@@ -2,6 +2,7 @@ from cmath import pi
 import numpy as np
 import rospy
 import time
+import os
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 from dynamixel_workbench_msgs.srv import DynamixelCommand
@@ -12,23 +13,24 @@ from dynamixel_workbench_msgs.srv import DynamixelCommand
 torques = [500, 500, 500, 500, 500]
 
 # Posiciones de referencia para cada caso
-posiciones_deg = [
-    [0, 0, 90, 0, 0],
-    [25, 25, 20, -20, 0],
-    [-35, 35, -30, 30, 0],
-    [85, -20, 55, 25, 0],
-    [80, -35, 55, -45, 0]
-]
+posiciones_deg = [[0, 0, 0, 0, 0],
+                  [25, 25, 20, -20, 0],
+                  [-35, 35, -30, 30, 0],
+                  [85, -20, 55, 25, 0],
+                  [80, -35, 55, -45, 0]]
 
 # Valores análogos de las posiciones home y los casos obtenidos desde dynamixel_wizard
-#positions_analog = [
-#    [514, 510, 818, 512, 512],
-#    [444, 575, 751, 580, 512],
-#    [614, 410, 922, 409, 512],
-#    [205, 560, 630, 570, 512],
-#    [205, 660, 629, 666, 546]
-#]
-posiciones_analog = [[514,510,818,512,512],[597,597,888,444,512],[393,630,716,616,512],[802,445,1000,599,512],[786,395,1000,360,546]]
+
+posiciones_analog = [[514,510,818,512,512],
+                     [597,597,888,444,512],
+                     [393,630,716,616,512],
+                     [802,445,1000,599,512],
+                     [786,395,1000,360,512]]
+
+#ir actualizando el caso para poder desplazarse entre casos sin tener que volver al home
+global caso_actual
+caso_actual = 0
+
 
 # Función para enviar comandos a los motores Dynamixel
 def Enviar_Comando_Articulacion(comando, id_motor, dir_nombre, valor, delay):
@@ -46,6 +48,7 @@ def callback(data):
     global posiciones_actuales
     posiciones_actuales = np.multiply(data.position, 180 / pi)
     posiciones_actuales[2] -= 90
+    #imprimir_posiciones(posiciones_actuales,posiciones_deg[caso_actual])
 
 # Función para imprimir las posiciones actuales de las articulaciones
 def imprimir_posiciones(real, teorico):
@@ -71,6 +74,8 @@ if __name__ == '__main__':
         for i, torque in enumerate(torques):
             Enviar_Comando_Articulacion('', i + 1, 'Torque_Limit', torque, 0)
 
+        os.system('clear')
+
         # Ir a la posición de home
         print('Ir a la posición de home\n')
         for i, pos in enumerate(posiciones_analog[0]):
@@ -83,19 +88,21 @@ if __name__ == '__main__':
         imprimir_posiciones(posiciones_actuales, posiciones_deg[0])
 
         while not rospy.is_shutdown():
-            #ir actualizando el caso para poder desplazarse entre casos sin tener que volver al home
-            caso_actual = 0
+
+            time.sleep(10)
+            os.system('clear')
 
             # Realizar la rutina de movimiento para el caso seleccionado
-            caso = int(input('Seleccione el caso a ejecutar (1-4): '))
-            print(f'Iniciando movimiento para el caso {caso}\n')
-            for i, pos in enumerate(posiciones_analog[caso]):
+            caso_actual = int(input('1. [25, 25, 20, -20, 0]\n2. [-35, 35, -30, 30, 0]\n3. [85, -20, 55, 25, 0]\n4. [80, -35, 55, -45, 0]\n0. Posición de HOME\n\nSeleccione el caso a ejecutar: '))
+            print(f'Iniciando movimiento para el caso {caso_actual}\n')
+            for i, pos in enumerate(posiciones_analog[caso_actual]):
                 print(f'Movimiento del eslabón {i + 1}')
                 mover(i, pos, posiciones_analog[caso_actual][i])
             print('Movimiento finalizado.')
 
             # Imprimir las posiciones actuales y teóricas
-            imprimir_posiciones(posiciones_actuales, posiciones_deg[caso])
+            imprimir_posiciones(posiciones_actuales, posiciones_deg[caso_actual])
+            
     except rospy.ROSInterruptException:
         pass
 
