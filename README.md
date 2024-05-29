@@ -65,33 +65,42 @@ Y la MTH resultante es igual a:
 
 Después de sacar el modelo geométrico directo, se procedió a implementar la solución en ROS teniendo en cuenta las recomendaciones de la guía, por lo que para realizar dichos puntos, se hizo un solo programa en la cual se integra todos los puntos, primero importamos las librerias necesarias para el funcionamiento del programa:
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/eb250911-1135-4a1c-9661-e2197c475a3d)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/9df3d0a2-2985-4838-ae31-4384a7656c1f)
 
-Después programamos los arreglos con los ángulos de cada una de las poses del robot y su equivalente análogo el cual facilitará el movimiento:
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/1140d247-c893-47f7-b835-2c1fd3ff38b3)
+Después programamos los arreglos con los torques de cada motor, los ángulos de cada una de las poses del robot y su equivalente análogo el cual facilitará el movimiento y declaramos una variable global sobre la pose en la que esté el robot con el fin de poder estimar de mejor manera los movimientos y los errores RMS de cada motor:
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/b59ee55d-2ba0-4ca2-85ca-b9131ed675fc)
+
 
 Ahora debemos programar el servicio de Dynamizel, el cual se mantiene en constante contacto con el nodo activo y el roscore, agilizando la comunicación entre ROS y el robot:
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/22b8065e-ab02-470b-a343-77f054c078b8)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/3eeb3bd4-1251-4b34-b0ed-1458f34628c7)
+
 
 Sabiendo que necesitamos del suscriptor para saber las posiciones de los motores, debemos preparar un callback el cual se programó de la siguiente manera:
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/ac1627ce-bb26-4a65-86ed-30d67b222845)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/8f98aab3-a710-4e72-ab5e-3589aec8a99e)
 
-Lo siguiente es para imprimir posiciones, el cuál se tiene en cuenta con la precisión dada por los motores: 
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/80c2c03e-2828-4353-b7fb-0ab48126d3a1)
+Lo siguiente es para imprimir las posiciones de los motores con la última posición dada por la función de callback, el cuál tiene en cuenta el error RMS de posición de los motores: 
 
-Ahora debemos programar el movimiento de las articulaciones simplemente llamando al sistema de envío de comandos de Dynamixel: 
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/8406d07f-8a79-4f9f-b332-90cbebecaf36)
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/26a71515-738d-41c4-ad45-7c1aae8e4598)
 
-Finalmente, tenemos el código principal en el cual se incluye el movimiento hacia el home y el bucle para ir de una posición a otra sin tener que reejecutar el programa: 
+Ahora debemos programar el movimiento de las articulaciones simplemente llamando al sistema de envío de comandos de Dynamixel dándole la posición objetivo: 
 
-![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/a71592ea-5b17-4329-8f60-d80835d1a646)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/2048c0a0-60df-406d-be4e-94b677527c9d)
 
-Cabe aclarar que la interfaz HMI se programó para la consola.
+
+Finalmente, tenemos el código principal en el cual se incluye el movimiento hacia el home y el bucle para ir de una posición a otra sin tener que reejecutar el programa, también se da una espera de 10 segundos para que el usuario pueda leer los estados de los motores en la posición actual y limpia la información para dar una interfaz más amigable: 
+
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/a7685e66-f6a9-4560-ba62-a94d2c753c99)
+![image](https://github.com/FelipeCh18/Lab4Robotica/assets/95656388/65dbad6d-f8bb-4a48-9ab4-d82d6dd3311f)
+
+
+
+Cabe aclarar que la interfaz HMI se programó para la consola de linux.
 
 
 
